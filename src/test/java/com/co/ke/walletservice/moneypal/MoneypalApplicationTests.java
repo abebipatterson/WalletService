@@ -16,28 +16,28 @@ class MoneypalApplicationTests {
     }
 
     // test for creating the wallet
-    @Test
-    void createUserWalletTest() {
-        System.out.println("TO BE REWRITTEN A FRESH");
-    }
-    // test for getting wallet details of a user
-    @Test
-    void getUserWalletDetailsTest() {
-        System.out.println("TO BE REWRITTEN A FRESH");
-
-    }
-
-    // test to top up a wallet
-    @Test
-    void topUpUserWalletTest() {
-        System.out.println("TO BE REWRITTEN A FRESH");
-    }
-
-    //
-
-    @Test
-    void testBillingOfUserWallet(){
-        System.out.println("TO BE REWRITTEN A FRESH");
-    }
+//    @Test
+//    void createUserWalletTest() {
+//        System.out.println("TO BE REWRITTEN A FRESH");
+//    }
+//    // test for getting wallet details of a user
+//    @Test
+//    void getUserWalletDetailsTest() {
+//        System.out.println("TO BE REWRITTEN A FRESH");
+//
+//    }
+//
+//    // test to top up a wallet
+//    @Test
+//    void topUpUserWalletTest() {
+//        System.out.println("TO BE REWRITTEN A FRESH");
+//    }
+//
+//    //
+//
+//    @Test
+//    void testBillingOfUserWallet(){
+//        System.out.println("TO BE REWRITTEN A FRESH");
+//    }
 
 }
