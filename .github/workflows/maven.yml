@@ -11,8 +11,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    env:
+      DB_PASSWORD: Lorine@1234
+      DB_USER: root
+      DB_DATABASE: money_pal_walletservice
     services:
       # How to use MySQL
       mysql:
