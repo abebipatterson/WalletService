@@ -39,8 +39,6 @@ jobs:
     - name: Set up MySQL
       run: |
             sudo /etc/init.d/mysql start
-      env:
-        DATABASE_URL: "mysql2://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/money_pal_walletservice"
             mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
     - name: Build with Maven
       run: mvn clean package
