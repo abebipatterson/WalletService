@@ -2,16 +2,14 @@ package com.co.ke.walletservice.moneypal.service;
 
 import com.co.ke.walletservice.moneypal.model.UserWallet;
 import com.co.ke.walletservice.moneypal.repository.WalletRepository;
-import com.co.ke.walletservice.moneypal.wrapper.Body1Response;
-import com.co.ke.walletservice.moneypal.wrapper.EmailResponseWrapper;
-import com.co.ke.walletservice.moneypal.wrapper.GeneralResponseWrapper;
-import com.co.ke.walletservice.moneypal.wrapper.Wrapper2;
+import com.co.ke.walletservice.moneypal.wrapper.*;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +36,16 @@ public class WalletService {
 
     @Value("${emailServiceUrl}")
     public String emailServiceUrl;
+
+
+    @Autowired
+    private AmqpTemplate rabbitTemplate1;
+
+    @Value("${exchange}")
+    String exchange;
+
+    @Value("${bindingKey}")
+    private String routingkey;
 
     public GeneralResponseWrapper createWallet(String email) {
         GeneralResponseWrapper generalResponseWrapper = new GeneralResponseWrapper();
@@ -153,7 +161,19 @@ public class WalletService {
 
                 }
                 List<UserWallet> wallets = Stream.of(wallet, wallet2).collect(Collectors.toList());
-                ;
+                // TODO: CHECK THIS
+                // ============SEND TO RMQ
+//                BillingRequestToRMQ billingRequestToRMQ=new BillingRequestToRMQ();
+//                billingRequestToRMQ.setEmailBy(emailFrom);
+//                billingRequestToRMQ.setEmailTo(emailTo);
+//                billingRequestToRMQ.setAmount(amount);
+//
+//                rabbitTemplate1.convertAndSend(exchange, routingkey,billingRequestToRMQ);
+
+//                System.out.println("BILLING DETAILS SENT TO RQM for Billing Service : "+ billingRequestToRMQ);
+//                System.out.println("Message Sent to RQM Done");
+
+                //===================================
                 generalResponseWrapper.setResponseBody(wallets);
                 generalResponseWrapper.setResponseCode(200);
                 generalResponseWrapper.setResponseMessage("Wallet Billing Operation Successful");
